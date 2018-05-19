@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=GreenFoot
+comment0.text=\n\ Write\ a\ description\ of\ class\ GreenFoot\ here.\n\n\ @author\ (your\ name)\n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=
+comment1.target=GreenFoot()
+comment2.params=
+comment2.target=double\ calculateFoodEnergyUsage()
+comment2.text=\n\ An\ example\ of\ a\ method\ -\ replace\ this\ comment\ with\ your\ own\n\n\ @param\ \ y\ \ a\ sample\ parameter\ for\ a\ method\n\ @return\ \ \ \ the\ sum\ of\ x\ and\ y\n
+comment3.params=state\ powerBill
+comment3.target=double\ carbonFromPower(java.lang.String,\ double)
+comment4.params=
+comment4.target=double\ carbonFromCar()
+comment5.params=state\ powerBill
+comment5.target=double\ calculateCarbon(java.lang.String,\ double)
+numComments=6
