@@ -77,7 +77,14 @@ public class GreenFoot
         if(type.equals("beef")){
             foodEnergyUsage += beef * weight;
         }
-        foodEnergyUsage/=907.18;
+        System.out.println("Do you want to add more food? 'yes' or no");
+        String answer = keyboard.next();
+        if(answer.equals("yes")){
+            calculateFoodEnergyUsage();
+        }
+        else{
+            foodEnergyUsage/=907.18;
+        }
         return foodEnergyUsage;
     }
 
@@ -188,13 +195,14 @@ public class GreenFoot
         double temp2 = 0;
         double temp3 = 0;
         temp1 += calculateFoodEnergyUsage();
-        System.out.println(temp1);
+        
         temp2 += carbonFromPower(state, powerBill);
-        System.out.println(temp2);
+        
         temp3 += carbonFromCar()/90718;
-        System.out.println(temp3);
+        
         totalCarbon = (temp1 + temp2 + temp3);
-        System.out.println(totalCarbon);
+        System.out.println("Your total carbon footprint is " + totalCarbon + "tons per year");
+        
         return totalCarbon;
     }
 }
