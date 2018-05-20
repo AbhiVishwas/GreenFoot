@@ -77,7 +77,7 @@ public class GreenFoot
         if(type.equals("beef")){
             foodEnergyUsage += beef * weight;
         }
-        /** IF YOU WANT TO ADD MULTIPLE FOODS
+        
         System.out.println("Do you want to add more food? 'yes' or no");
         String answer = keyboard.next();
         if(answer.equals("yes")){
@@ -86,7 +86,7 @@ public class GreenFoot
         else{
             foodEnergyUsage/=907.18;
         }
-        */
+        
         return foodEnergyUsage;
     }
 
