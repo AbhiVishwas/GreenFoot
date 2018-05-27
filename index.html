@@ -6,13 +6,15 @@
 
 var persistmenu="yes" //"yes" or "no". Make sure each SPAN content contains an incrementing ID starting at 1 (id="sub1", id="sub2", etc)
 var persisttype="sitewide" //enter "sitewide" for menu to persist across site, "local" for this page only
-
+var c = total;
+var a = foodEnergyUsage;
+var c = total;
 if (document.getElementById){ //DynamicDrive.com change
 document.write('<style type="text/css">\n')
 document.write('.submenu{display: none;}\n')
 document.write('</style>\n')
 }
-
+/* Sets up site menu.*/
 function SwitchMenu(obj){
 	if(document.getElementById){
 	var el = document.getElementById(obj);
@@ -41,7 +43,6 @@ function get_cookie(Name) {
       returnvalue=unescape(document.cookie.substring(offset, end))
       }
     }    
-    return returnvalue;
   }
 
 function onloadfunction(){
@@ -101,15 +102,13 @@ window.onunload=savemenustate
 
 <ul>
   <li><a class="active" href="#home">Home</a></li>
-  <li><a href="#news">News</a></li>
-  <li><a href="#contact">Contact</a></li>
-  <li><a href="#about">About</a></li>
+  <li><a href="https://www.britannica.com/science/carbon-footprint">News</a></li>
+  <li><a href="https://docs.google.com/presentation/d/1cnpu7-BEOWAEtnCQ44id9Koewo_yoSxz_d95_KxJYm4/edit#slide=id.g3b29aacc84_0_137">About</a></li>
 </ul>
 
-<div style="margin-right:25%;padding:1px 16px;height:1000px;">
-  <h3 style="color:white;">Do you really know how big your carbon footprint is?</h3>
-  
-</body>
+<div style="margin-right:40%;padding:1px 16px;height:1000px;">
+  <br><h3 style="color:white;">Do you really know how big your carbon footprint is?</h3>
+  </body>
 
 <script>
 /* When the user clicks on the button, 
@@ -124,7 +123,6 @@ toggle between hiding and showing the dropdown content */
         <script>
           function CalcFood() {
             CalcFood.prototype.calculateFoodEnergyUsage = function (){
-            
                 var foodEnergyUsage;
                 var corn = 2;
                 var milk = 3;
@@ -139,29 +137,32 @@ toggle between hiding and showing the dropdown content */
                 var amt = document.getElementById('foodAmnt').value
                 debugger;
                   if(foodInput == "corn"){
-                      foodEnergyUsage += (corn*amt); 
+                      foodEnergyUsage += (corn*amt)/907.18; 
                   }
                   if(foodInput == "milk"){
-                      foodEnergyUsage += (milk*amt);
+                      foodEnergyUsage += (milk*amt)/907.18;
                   }
                   if(foodInput == "apples"){
-                      foodEnergyUsage += (apples*amt);
+                      foodEnergyUsage += (apples*amt)/907.18;
                   }
                   if(foodInput == "eggs"){
-                      foodEnergyUsage += (eggs*amt); 
+                      foodEnergyUsage += (eggs*amt)/907.18; 
                   }
                   if(foodInput == "chicken"){
-                      foodEnergyUsage += (chicken*amt);
+                      foodEnergyUsage += (chicken*amt)/907.18;
                   }
                   if(foodInput == "cheese"){
-                      foodEnergyUsage += (cheese*amt);
+                      foodEnergyUsage += (cheese*amt)/907.18;
                   }
                   if(foodInput == "pork"){
-                      foodEnergyUsage += (pork*amt);
+                      foodEnergyUsage += (pork*amt)/907.18;
                   }
                   if(foodInput == "beef"){
-                      foodEnergyUsage += (beef*amt);
+                      foodEnergyUsage += (beef*amt)/907.18;
                   }
+              foodEnergyUsage = foodEnergyUsage;
+              a = foodEnergyUsage;
+              
               
           }
         </script>
@@ -182,6 +183,7 @@ toggle between hiding and showing the dropdown content */
         
         <script>
           function CalcCar(){
+              
               var caremission = 0;
               var carType = document.getElementById('carType').value
               var mpg = document.getElementById('mpg').value
@@ -200,7 +202,10 @@ toggle between hiding and showing the dropdown content */
               if(carType == "E"){
                 caremission = 0;
               }
-            window.alert(caremission);
+            b = caremission/90718;
+             window.alert("Car emissions in tons/yr: "+ caremission/90718);
+            
+            
             }
         </script> 
         
@@ -223,7 +228,9 @@ toggle between hiding and showing the dropdown content */
         
         
       <script>
-        function CalcEnergy  (){
+        function CalcEnergy(){
+          
+          var total = 0;
           var state = document.getElementById('state').value
           var powerBill = document.getElementById('powerBill').value
           var states = ["Alaska", "Alabama", "Arkansas", "Arizona", "California", "Colorado", "Connecticut", "District of Columbia", "Delaware", "Florida", "Georgia", "Hawaii", "Iowa", "Idaho", "Illinois", "Indiana", "Kansas", "Kentucky", "Louisiana", "Massachusetts", "Maryland", "Maine", "Michigan", "Minnesota", "Missouri", "Mississippi", "Montana", "North Carolina", "North Dakota", "Nebraska", "New Hampshire", "New Jersey", "New Mexico", "Nevada", "New York", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Virginia", "Vermont", "Washington", "West Virginia", "Wisconsin", "Wyoming"];
@@ -236,8 +243,10 @@ toggle between hiding and showing the dropdown content */
           var price = prices[i] / 100;
           var kwh = 12 * powerBill / price;
           var pounds = 1.4 * kwh;
-          var total = pounds * 5.0E-4;
-          window.alert(total);
+          total = pounds * 5.0E-4;
+          c = total;
+         
+          
         
     }
      </script>
@@ -263,16 +272,21 @@ toggle between hiding and showing the dropdown content */
     <script type="text/javascript">
       google.charts.load("current", {packages:["corechart"]});
       google.charts.setOnLoadCallback(drawChart);
+      /* Proof of concept - couldn't get it to display actual values*/
       function drawChart() {
+        var carData = CalcCar();
+        var foodData = CalcFood();
+        var energyData = CalcEnergy();
         var data = google.visualization.arrayToDataTable([
           ['Catergory', 'Tons per year'],
-          ['Car',   33  ],
-          ['Food',  6],
-          ['Appliances',  4]
+          ['Car',   30],
+          ['Food',  5],
+          ['Appliances', 45]
         ]);
 
         var options = {
           title: 'Your GreenFoot Rating:',
+          width: 531,
           pieHole: 0.4,
         };
 
@@ -280,31 +294,37 @@ toggle between hiding and showing the dropdown content */
         chart.draw(data, options);
       }
     </script>
-  <br><br><input name="buttonExecute" onclick="calculateCarbon()" type="button" value="Click To See Your Carbon Footprint"/>
+  <br><br><input name="buttonExecute" onclick="calculateCarbon()" type="button" value="Click To See Your Carbon Footprint in tons"/>
   <input name="buttonExecute" onclick="avg()" type="button" value="Click To See Your Carbon Footprint Rank"/>
+  
     <script>
+      var totalCarbon = 0;
       function calculateCarbon(){
         var temp1 = 0;
         var temp2 = 0;
         var temp3 = 0;
-        temp1 += CalcFood();
+        temp1 += a
         
-        temp2 += CalcCar();
+        temp2 += b
         
-        temp3 += CalcEnergy()/90718;
+        temp3 += c
         
         totalCarbon = (temp1 + temp2 + temp3);
         
-        window.alert("Your total carbon footprint is " + totalCarbon + "tons per year");
-         //document.write(totalCarbon);
-    
-    //add table here instead 
+        window.alert("Your total carbon footprint is " + totalCarbon + " tons per year");
     }
     function avg(){
         var rank = 0;
         rank = (totalCarbon*28)/2;
-        
-        window.alert("Your carbon footprint rank is: " + rank
+      /* Makes sure displayed rank is within rating system.*/
+        if(rank>=0 && rank<=800)
+        {
+          window.alert("Your carbon footprint rank out of 800 is: " + rank);
+        }
+        else
+        {
+          window.alert("You're off the scale...Try reducing some of you energy values");
+        }
     }
   </script>
 </body>
@@ -312,7 +332,7 @@ toggle between hiding and showing the dropdown content */
 <footer>   
   <f1 id = "footer" style = "font-size:110%;"> 
     <p> © CodeDay Bay Area 2018</p>
-    By Abhi, Arjun, Pranav, Darren and Andy </f1>
+    By Abhi, Arjun, Pranav, Darren, and Andy </f1>
 </footer>
 <div id="donutchart" style="width: 900px; height: 500px;"></div>
   
