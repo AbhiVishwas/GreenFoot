@@ -1,14 +1,8 @@
-var totalCarbon = 0;
-
-
-//console.log(CalcEnergy())
-
-//document.getElementById("example").addEventListener("click", CalcFood);
+var a = 0;
+var b = 0;
+var c = 0;
 
 function CalcFood() {
- // function CalcFood() {
- // }
- // CalcFood.prototype.calculateFoodEnergyUsage = function (){
       var foodEnergyUsage = 0;
       var corn = 2;
       var milk = 3;
@@ -19,36 +13,37 @@ function CalcFood() {
       var pork = 12.5;
       var beef = 30.5;
       
+      
       var food = document.getElementById('foodInput').value
       var amt = document.getElementById('foodAmnt').value
       debugger;
-      //var amt = prompt("please enter the amount you eat of this food every year in pounds", "42");
         if(food == "corn"){
-            foodEnergyUsage += corn*amt 
+            foodEnergyUsage += (corn*amt)/907.18;
         }
         if(food == "milk"){
-            foodEnergyUsage += milk*amt;
+            foodEnergyUsage += (milk*amt)/907.18;
         }
         if(food == "apples"){
-            foodEnergyUsage += apples*amt;
+            foodEnergyUsage += (apples*amt)/907.18;
         }
         if(food == "eggs"){
-            foodEnergyUsage += eggs*amt; 
+            foodEnergyUsage += (eggs*amt)/907.18; 
         }
         if(food == "chicken"){
-            foodEnergyUsage += chicken*amt;
+            foodEnergyUsage += (chicken*amt)/907.18;
         }
         if(food == "cheese"){
-            foodEnergyUsage += cheese*amt;
+            foodEnergyUsage += (cheese*amt)/907.18;
         }
         if(food == "pork"){
-            foodEnergyUsage += pork*amt;
+            foodEnergyUsage += (pork*amt)/907.18;
         }
         if(food == "beef"){
-            foodEnergyUsage += beef*amt;
+            foodEnergyUsage += (beef*amt)/907.18;
         }
-    window.alert(foodEnergyUsage);
- // }
+    a = foodEnergyUsage;
+    window.alert("Food energy in tons/yr: " + foodEnergyUsage);
+   
 }
 
 console.log(CalcFood())
@@ -72,9 +67,12 @@ function CalcCar(){
   if(carType == "E"){
     caremission = 0;
   }
-  window.alert(caremission);
+  b  = caremission/90718;
+  window.alert("Car emissions in tons/yr: "+ caremission/90718);
+  
 }
 function CalcEnergy  (){
+        var total = 0;
         var state = document.getElementById('state').value;
         var powerBill = document.getElementById('powerBill').value
         var states = ["Alaska", "Alabama", "Arkansas", "Arizona", "California", "Colorado", "Connecticut", "District of Columbia", "Delaware", "Florida", "Georgia", "Hawaii", "Iowa", "Idaho", "Illinois", "Indiana", "Kansas", "Kentucky", "Louisiana", "Massachusetts", "Maryland", "Maine", "Michigan", "Minnesota", "Missouri", "Mississippi", "Montana", "North Carolina", "North Dakota", "Nebraska", "New Hampshire", "New Jersey", "New Mexico", "Nevada", "New York", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Virginia", "Vermont", "Washington", "West Virginia", "Wisconsin", "Wyoming"];
@@ -87,28 +85,37 @@ function CalcEnergy  (){
         var price = prices[i] / 100;
         var kwh = 12 * powerBill / price;
         var pounds = 1.4 * kwh;
-        var total = pounds * 5.0E-4;
-        window.alert(total);
+        total = pounds * 5.0E-4;
+        c = total;
+        window.alert("Energy in tons/yr: " + total);
+        
 }
+var totalCarbon = 0;
   function calculateCarbon(){
         var temp1 = 0;
         var temp2 = 0;
         var temp3 = 0;
-        temp1 += CalcFood();
+        temp1 += a
         
-        temp2 += CalcCar();
+        temp2 += b
         
-        temp3 += CalcEnergy()/90718;
+        temp3 += c
         
-        totalCarbon = (temp1 + temp2 + temp3);
-        window.alert("Your total carbon footprint is " + totalCarbon + "tons per year");
-         //document.write(totalCarbon);
-    
-    //add table here instead 
+        totalCarbon = (a + b + c);
+        window.alert("Your total carbon footprint is " + totalCarbon + " tons per year");
+   
     }
   function avg(){
         var rank = 0;
         rank = (totalCarbon*28)/2;
-        //document.write(rank);
-        window.alert("Your carbon footprint rank is: " + rank);
+        if(rank>=0 && rank<=800)
+        {
+          window.alert("Your carbon footprint rank out of 800 is: " + rank );
+        }
+        else
+        {
+          window.alert("You're off the scale...Try reducing some of your energy values.");
+        }
+  
     }
+  
