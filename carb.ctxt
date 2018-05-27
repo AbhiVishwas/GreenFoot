@@ -1,5 +1,0 @@
-#BlueJ class context
-comment0.target=carb
-comment1.params=state\ powerBill
-comment1.target=double\ carbonFromPower(java.lang.String,\ double)
-numComments=2
